@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="profile.css">
     <title>Profle - Socialbook</title>
     <script src="https://kit.fontawesome.com/ef7e2b893b.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -78,10 +79,10 @@
 
 
     <div class="profile-container">
-        <img src="../images/cover.png" class="coverImage" alt="">
+        <img src="../images/cover.png" class="coverImage" alt="Ảnh bìa" id="background">
         <div class="dashboard">
             <div class="left-dashboard">
-                <img src="../images/profile.png" class="dashboard-img" alt="">
+                <img src="../images/profile.png" class="dashboard-img" alt="Ảnh đại diện" id="profile">
                 <div class="left-dashboard-info">
                     <h3>Jack Nichoson</h3>
                     <p>120 Friends - 20 mutuals</p>
@@ -221,39 +222,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="post-content">
-                    <div class="status-field-container write-post-container">
-                        <div class="user-profile-box">
-                            <div class="user-profile">
-                                <img src="../images/profile-pic.png" alt="">
-                                <div>
-                                    <p> Alex Carry</p>
-                                    <small>August 13 1999, 09.18 pm</small>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                            </div>
-                        </div>
-                        <div class="status-field">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dolores praesentium dicta
-                                laborum nihil accusantium odit laboriosam, sed sit autem! <a
-                                        href="#">#This_Post_is_Better!!!!</a>
-                            </p>
-                            <img src="../images/feed-image-1.png" alt="">
+                <div id="post-content" >
 
-                        </div>
-                        <div class="post-reaction">
-                            <div class="activity-icons">
-                                <div><img src="../images/like-blue.png" alt="">120</div>
-                                <div><img src="../images/comments.png" alt="">52</div>
-                                <div><img src="../images/share.png" alt="">35</div>
-                            </div>
-                            <div class="post-profile-picture">
-                                <img src="../images/profile-pic.png " alt=""> <i class=" fas fa-caret-down"></i>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <button type="button" class="btn-LoadMore" onclick="LoadMoreToggle()">Load More</button>
             </div>
