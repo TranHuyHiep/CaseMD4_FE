@@ -11,6 +11,7 @@
     <meta name="author" content="w3hubs.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="login.css">
   </head>
   <body>
@@ -23,13 +24,14 @@
         <div class="col-md-5">
           <form class="login-form" action="#">
             <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Email address or phone number" name="username"
+              <input type="text" class="form-control" placeholder="Email address or phone number" id="username"
                 required>
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" placeholder="Password" name="password"
+              <input type="password" class="form-control" placeholder="Password" id="password"
                 required>
             </div>
+            <div id="body-notification"></div>
             <button type="button" class="btn btn-custom btn-lg btn-block mt-3" onclick="login()">Login</button>
             <div class="text-center pt-3 pb-3">
               <a href="#" class="">Forgotten password?</a>
