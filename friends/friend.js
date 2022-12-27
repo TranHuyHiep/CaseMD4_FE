@@ -13,7 +13,7 @@ function UserSettingToggle(){
 
 function darkModeON(){
     darkBtn.classList.toggle("dark-mode-on");
-   document.body.classList.toggle("dark-theme");
+    document.body.classList.toggle("dark-theme");
 };
 
 function LoadMoreToggle(){
@@ -56,3 +56,26 @@ input.addEventListener("keypress", function(event) {
         window.location.href = "friends/friend.html"
     }
 });
+
+LoadFriend()
+function LoadFriend() {
+    var nameSearch = localStorage.getItem("search")
+    var token = localStorage.getItem(ACCESS_TOKEN)
+
+    document.getElementById('search').value = nameSearch
+
+    const RESPONSE_FAIL = 'Fail'
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8081/user/displayname/' + nameSearch,
+        headers: {
+            'Content-Type': 'application/json',
+            'beartoken': token
+        },
+        success: (data) => {
+            $(".profileImg").attr("src", data.image)
+        },
+            error: function (data) {
+        }
+    })
+}
