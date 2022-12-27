@@ -29,8 +29,44 @@ function login() {
             console.log(token)
             const notification = `<p style="color: #e05353">Sai tài khoản hoặc mật khẩu</p>`;
             $('#body-notification').html(notification);
-            const div_notification = $('#notification');
-            const toast = new bootstrap.Toast(div_notification)
+        }
+    })
+}
+
+$("#register").click(function(){
+    myModal = $("#exampleModalLong")
+    myModal.show("block")
+    document.getElementById("exampleModalLong").classList.remove('fade');
+});
+
+function closeRegister() {
+    myModal = $("#exampleModalLong")
+    myModal.hide();
+    document.getElementById("exampleModalLong").classList.add('fade');
+}
+
+function register() {
+    const email = $("#reemail").val();
+    const username = $("#reusername").val();
+    const password = $("#repassword").val();
+    const Account = {
+        email: email,
+        username: username,
+        password: password
+    }
+    const RESPONSE_FAIL = 'Fail'
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8081/account/register',
+        data: JSON.stringify(Account),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        success: (token) => {
+            alert("Đăng ký thành công!")
+        },
+        error: function (token) {
+            alert("Đăng ký không thành công!")
         }
     })
 }

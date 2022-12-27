@@ -50,3 +50,7 @@ a:hover{
         box-shadow: none;
     }
 }
+
+td input {
+    color: #0a0a0a;
+}
