@@ -45,7 +45,7 @@ function getAllPostByUser(){
                         </div>
                         <div class="post-reaction">
                             <div class="activity-icons">
-                                <div ><img onclick="likePost()" src="../images/like-blue.png" alt="">${item.likeCount}</div>
+                                <div ><img onclick="likePost(${item.id})" src="../images/like-blue.png" alt="">${item.likeCount}</div>
                                 <div><img src="../images/comments.png" alt="">${item.cmtCount}</div>
                                 <div><img src="../images/share.png" alt="">100</div>
                             </div>
@@ -76,32 +76,62 @@ function loadInfo(){
 }
 function postStatus(){
     let id = localStorage.getItem("idUser")
-    alert("Click")
+    let token = localStorage.getItem("token")
+    let content = document.getElementById("content").value
     let data = {
-        content: document.getElementById("content"),
-        time:"2022-09-22 23:11:28",
+        appUser: {
+            id : id
+        },
+        content: content,
+        time:"2022-09-22T23:11:28",
         cmtCount: 0,
-        likeCount: 0
+        likeCount: 0,
+        status: 1
     }
+    console.log(data)
     $.ajax({
         type: 'Post',
         url: "http://localhost:8081/posts",
         data: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
         success: function (response){
             alert("Đăng bài thành công!")
-            alert(response)
+            location.reload()
         },
         error:function (err){
+            alert("Đăng bài thất bại!")
             console.log(err)
         }
 
     })
 }
-function likePost(){
-    alert("like");
+function likePost(idPost){
+    const id = localStorage.getItem("idUser")
+    let like = {
+        appUser: {
+            id : id
+        },
+        post:{
+            id: idPost
+        }
+    }
     $.ajax({
         type: 'post',
-        url:'http://localhost:8081/like/1/1',
+        data: JSON.stringify(like),
+        url:'http://localhost:8081/likes',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        success: function (response){
+            alert("Like")
+            location.reload()
+        },
+        error:function (err){
+            alert("Lỗi")
+            console.log(err)
+        }
     })
 }
 
