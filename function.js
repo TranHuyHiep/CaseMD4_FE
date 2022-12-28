@@ -24,7 +24,6 @@ const id = localStorage.getItem(ID_USER)
 loadData(id)
 
 function loadData(id) {
-    profileImage = document.getElementsByClassName("profileImg");
 
     const RESPONSE_FAIL = 'Fail'
     $.ajax({
@@ -34,7 +33,9 @@ function loadData(id) {
             'Content-Type': 'application/json'
         },
         success: (token) => {
+            console.log(token)
             $(".profileImg").attr("src", token.image)
+            $(".profileName").html(token.displayName)
         },
         error: function (token) {
 
@@ -56,3 +57,7 @@ input.addEventListener("keypress", function(event) {
         window.location.href = "friends/friend.html"
     }
 });
+
+function gotoindfex() {
+    window.location.href = "../index.html.html"
+}

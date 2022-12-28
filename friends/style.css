@@ -441,6 +441,13 @@ img.advertisement-image {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    color: #626262;
+    background-color: var(--bg-color);
+    width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
 
 button.btn-LoadMore {
@@ -714,3 +721,4 @@ img.coverImage {
     background-color: #41db51;
     color: #41db51;
 }
+
