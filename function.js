@@ -46,3 +46,16 @@ function logout() {
     localStorage.removeItem(ACCESS_TOKEN)
     window.location.href = "login/login.html"
 }
+
+var input = document.getElementById("search");
+
+input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        localStorage.setItem("search", input.value)
+        window.location.href = "friends/friend.html"
+    }
+});
+
+function gotoindfex() {
+    window.location.href = "../index.html.html"
+}
