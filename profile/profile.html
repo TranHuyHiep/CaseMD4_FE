@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-left"><img class="logo" src="../images/logo.png" alt="">
             <ul class="navlogo">
                 <li><img src="../images/notification.png"></li>
@@ -33,9 +33,9 @@
         <div class="user-settings">
             <div class="profile-darkButton">
                 <div class="user-profile">
-                    <img src="../images/profile-pic.png" alt="">
+                    <img class="profile" src="" alt="Ảnh đại diện">
                     <div>
-                        <p> Alex Carry</p>
+                        <p class="nameProfile"> </p>
                         <a href="#">See your profile</a>
                     </div>
                 </div>
@@ -61,15 +61,9 @@
                 <img src="../images/help.png" alt="" class="settings-icon">
                 <a href="#">Help & Support <img src="../images/arrow.png" alt=""></a>
             </div>
-
-<!--            <div class="settings-links">-->
-<!--                <img src="images/display.png" alt="" class="settings-icon">-->
-<!--                <a href="#">Display & Accessibility <img src="../images/arrow.png" alt=""></a>-->
-<!--            </div>-->
-
             <div class="settings-links">
                 <img src="../images/logout.png" alt="" class="settings-icon">
-                <a href="#">Logout <img src="../images/arrow.png" alt=""></a>
+                <a href="#" onclick="logout()">Logout <img src="../images/arrow.png" alt=""></a>
             </div>
 
         </div>
@@ -117,12 +111,6 @@
                         <a href="#"><i class="fas fa-briefcase"></i>
                             <p id="phone"></p>
                         </a>
-<!--                        <a href="#"><i class="fas fa-graduation-cap"></i>-->
-<!--                            <p>Studied bsc at Choumuhoni Collage</p>-->
-<!--                        </a>-->
-<!--                        <a href="#"><i class="fas fa-user-graduate"></i>-->
-<!--                            <p>Went to Technical School & Collage</p>-->
-<!--                        </a>-->
                         <a href="#"><i class="fas fa-home"></i>
                             <p id="live"></p>
                         </a>
@@ -216,9 +204,9 @@
                     <div class="post-upload-textarea">
                         <textarea name="content" placeholder="What's on your mind?" id="content" cols="30" rows="3"></textarea>
                         <div class="add-post-links">
-                            <button onclick="postStatus()">
+                            <a href="#" onclick="postStatus()">
                                 <img src="../images/postIcon.ico" alt="Post">Post
-                            </button>
+                            </a>
                             <a href="#"><img src="../images/live-video.png" alt="">Live Video</a>
                             <a href="#"><img src="../images/photo.png" alt="">Photo/Video</a>
                             <a href="#"><img src="../images/feeling.png" alt="">Feeling Activity</a>
@@ -237,6 +225,8 @@
     </footer>
 
     <script src="profile.js"></script>
+
+
 </body>
 
 </html>

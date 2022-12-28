@@ -89,12 +89,16 @@ function postStatus(){
         status: 1
     }
     console.log(data)
+    if(content.length === 0){
+        alert("Chưa có thông tin bài đăng!")
+        return
+    }
     $.ajax({
         type: 'Post',
         url: "http://localhost:8081/posts",
         data: JSON.stringify(data),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         success: function (response){
             alert("Đăng bài thành công!")
@@ -125,14 +129,18 @@ function likePost(idPost){
             'Content-Type': 'application/json'
         },
         success: function (response){
-            alert("Like")
             location.reload()
         },
         error:function (err){
-            alert("Lỗi")
             console.log(err)
         }
     })
+}
+
+function logout() {
+    localStorage.removeItem(ID_USER)
+    localStorage.removeItem(ACCESS_TOKEN)
+    window.location.href = "/login/login.html"
 }
 
 loadInfo()

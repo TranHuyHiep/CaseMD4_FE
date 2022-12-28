@@ -24,7 +24,6 @@ const id = localStorage.getItem(ID_USER)
 loadData(id)
 
 function loadData(id) {
-    profileImage = document.getElementsByClassName("profileImg");
 
     const RESPONSE_FAIL = 'Fail'
     $.ajax({
@@ -34,7 +33,7 @@ function loadData(id) {
             'Content-Type': 'application/json'
         },
         success: (token) => {
-            $(".profileImg").attr("src", token.image)
+            $(".profileImg").attr("src", "images/" + token.image)
         },
         error: function (token) {
 
