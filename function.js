@@ -34,15 +34,57 @@ function loadData(id) {
         },
         success: (token) => {
             $(".profileImg").attr("src", "images/" + token.image)
+            $(".nameProfile").html(token.displayName)
         },
         error: function (token) {
 
         }
     })
 }
+getAllPost();
+function getAllPost(){
+    let id = localStorage.getItem("idUser");
+    console.log(id)
+    $.ajax({
+        type: 'get',
+        url: 'http://localhost:8081/posts/home/'+ id,
+        success: function (response) {
+            console.log(response)
+            let html = "";
+            response.forEach((item, index) => {
+                html += `<div class="status-field-container write-post-container">
+                        <div class="user-profile-box">
+                    <div class="user-profile">
+                        <img src="images/${item.appUser.image}" alt="Ảnh đại diện">
+                        <div>
+                            <p>${item.appUser.displayName}</p>
+                            <small>${item.time}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="status-field">
+                    <p>
+                     ${item.content}
+                    </p>
+
+                </div>
+                <div class="post-reaction">
+                    <div class="activity-icons">
+                        <div><img onclick="likePost(${item.id})" src="images/like-blue.png" alt="">${item.likeCount}</div>
+                        <div><img src="images/comments.png" alt="">${item.cmtCount}</div>
+                        <div><img src="images/share.png" alt="">100</div>
+                    </div>
+                </div>
+                    </div>`
+            })
+
+            $("#post-friend-content").html(html);
+        }
+    });
+}
 
 function logout() {
     localStorage.removeItem(ID_USER)
     localStorage.removeItem(ACCESS_TOKEN)
-    window.location.href = "login/login.html"
+    window.location.href = "/CaseMD4_FE/login/login.html"
 }
