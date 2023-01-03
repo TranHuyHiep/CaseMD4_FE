@@ -78,7 +78,6 @@ function loadInfo(){
 }
 function postStatus(){
     let id = localStorage.getItem("idUser")
-    let token = localStorage.getItem("token")
     let content = document.getElementById("content").value
     let data = {
         appUser: {
@@ -136,10 +135,10 @@ function likePost(idPost){
         }
     })
 }
-
-function logout() {
+function logout1() {
     localStorage.removeItem(ID_USER)
     localStorage.removeItem(ACCESS_TOKEN)
+    window.location.href = "/CaseMD4_FE/login/login.html"
     window.location.href = "../login/login.html"
 }
 loadInfo()

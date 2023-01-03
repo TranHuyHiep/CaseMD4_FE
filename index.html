@@ -102,7 +102,7 @@
         <div class="content-area">
             <div class="story-gallery">
                 <div class="story story1">
-                    <img src="images/upload.png" alt="" class="profileImg">
+                    <img src="" alt="" class="profileImg">
                     <p>Post Story</p>
                 </div>
                 <div class="story story2">
@@ -125,22 +125,27 @@
 
             <div class="write-post-container">
                 <div class="user-profile">
-                    <img src="images/profile-pic.png" alt="anh_dai_dien" class="profileImg">
+                    <img src="" alt="anh_dai_dien" class="profileImg">
                     <div>
-                        <p class="profileName"> Alex Carry</p>
+                        <p class="nameProfile"></p>
                         <small>Public <i class="fas fa-caret-down"></i></small>
                     </div>
                 </div>
 
                 <div class="post-upload-textarea">
-                    <textarea name="" placeholder="What's on your mind, Alex?" id="" cols="30" rows="3"></textarea>
+                    <textarea name="content" id="content" placeholder="What's on your mind?" id="" cols="30" rows="3"></textarea>
                     <div class="add-post-links">
+                        <a href="#" onclick="postStatus()">
+                            <img src="images/postIcon.ico" alt="Post">Post
+                        </a>
                         <a href="#"><img src="images/live-video.png" alt="">Live Video</a>
                         <a href="#"><img src="images/photo.png" alt="">Photo/Video</a>
                         <a href="#"><img src="images/feeling.png" alt="">Feeling Activity</a>
                     </div>
                 </div>
             </div>
+
+            <div id="post-friend-content">
 
             <div id="post-content">
 
@@ -220,5 +225,7 @@
     </footer>
 
     <script src="function.js"></script>
+    <script src="profile/profile.js"></script>
+
 </body>
 </html>
