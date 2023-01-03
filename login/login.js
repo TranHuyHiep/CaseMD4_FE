@@ -63,10 +63,10 @@ function register() {
             'Content-Type': 'application/json'
         },
         success: (token) => {
-            alert("Đăng ký thành công!")
+            alert("Register Successful!")
         },
         error: function (token) {
-            alert("Đăng ký không thành công!")
+            alert("Register Fail!")
         }
     })
 }

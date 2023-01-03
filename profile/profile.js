@@ -1,6 +1,8 @@
 var userSettings = document.querySelector(".user-settings");
 var darkBtn = document.getElementById("dark-button");
 var LoadMoreBackground =document.querySelector(".btn-LoadMore");
+const ACCESS_TOKEN = 'token';
+const ID_USER = 'idUser';
 function UserSettingToggle(){
     userSettings.classList.toggle("user-setting-showup-toggle");
 }
@@ -88,7 +90,6 @@ function postStatus(){
         likeCount: 0,
         status: 1
     }
-    console.log(data)
     if(content.length === 0){
         alert("Chưa có thông tin bài đăng!")
         return
@@ -106,7 +107,6 @@ function postStatus(){
         },
         error:function (err){
             alert("Đăng bài thất bại!")
-            console.log(err)
         }
 
     })
@@ -140,8 +140,7 @@ function likePost(idPost){
 function logout() {
     localStorage.removeItem(ID_USER)
     localStorage.removeItem(ACCESS_TOKEN)
-    window.location.href = "/login/login.html"
+    window.location.href = "../login/login.html"
 }
-
 loadInfo()
 getAllPostByUser()

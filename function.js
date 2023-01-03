@@ -34,6 +34,7 @@ function loadData(id) {
         },
         success: (token) => {
             $(".profileImg").attr("src", "images/" + token.image)
+            $(".profileName").html(token.displayName)
         },
         error: function (token) {
 
@@ -56,6 +57,54 @@ input.addEventListener("keypress", function(event) {
     }
 });
 
+function getAllPost(){
+    // let id = localStorage.getItem("idUser");
+    // console.log(id)
+    $.ajax({
+        type: 'get',
+        url: 'http://localhost:8081/posts',
+        success: function (response) {
+            console.log(response)
+            let html = "";
+            response.forEach((item, index) => {
+                html += `<div class="status-field-container write-post-container">
+
+                    <div class="user-profile-box">
+                        <div class="user-profile">
+                            <img src="../images/${item.appUser.image}" alt="">
+                            <div>
+                                <p>${item.appUser.displayName}</p>
+                                <small>${item.time}</small>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                        </div>
+                    </div>
+                    <div class="status-field">
+                            <p>
+                                ${item.content}
+                            </p>
+                        <img src="images/feed-image-1.png" alt="">
+
+                    </div>
+                    <div class="post-reaction">
+                            <div class="activity-icons">
+                                <div ><img onclick="likePost(${item.id})" src="../images/like-blue.png" alt="">${item.likeCount}</div>
+                                <div><img src="../images/comments.png" alt="">${item.cmtCount}</div>
+                                <div><img src="../images/share.png" alt="">100</div>
+                            </div>
+                    </div>
+                </div>`
+            })
+
+            $("#post-content").html(html);
+        }
+    });
+}
+
 function gotoindfex() {
     window.location.href = "../index.html.html"
 }
+
+getAllPost()
