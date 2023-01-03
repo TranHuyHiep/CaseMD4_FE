@@ -47,12 +47,25 @@ function getAllPostByUser(){
                         </div>
                         <div class="post-reaction">
                             <div class="activity-icons">
-                                <div ><img onclick="likePost(${item.id})" src="../images/like-blue.png" alt="">${item.likeCount}</div>
+                                <div ><img onclick="likePost(${item.id})" src="../images/like.png" alt="">${item.likeCount}</div>
                                 <div><img src="../images/comments.png" alt="">${item.cmtCount}</div>
                                 <div><img src="../images/share.png" alt="">100</div>
                             </div>
                         </div>
-                    </div>`
+                         <br/>
+                       <div class="input-group mb-3">
+                      
+                      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                         <img src="../images/send.ico" alt="">
+                        </button>
+                           
+                      </div>
+                    </div>
+                    </div>
+                     
+                `
             })
 
             $("#post-content").html(html);
