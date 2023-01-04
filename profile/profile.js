@@ -1,6 +1,8 @@
 var userSettings = document.querySelector(".user-settings");
 var darkBtn = document.getElementById("dark-button");
 var LoadMoreBackground =document.querySelector(".btn-LoadMore");
+const ACCESS_TOKEN = 'token';
+const ID_USER = 'idUser';
 function UserSettingToggle(){
     userSettings.classList.toggle("user-setting-showup-toggle");
 }
@@ -45,12 +47,25 @@ function getAllPostByUser(){
                         </div>
                         <div class="post-reaction">
                             <div class="activity-icons">
-                                <div ><img onclick="likePost()" src="../images/like-blue.png" alt="">${item.likeCount}</div>
+                                <div ><img onclick="likePost(${item.id})" src="../images/like.png" alt="">${item.likeCount}</div>
                                 <div><img src="../images/comments.png" alt="">${item.cmtCount}</div>
                                 <div><img src="../images/share.png" alt="">100</div>
                             </div>
                         </div>
-                    </div>`
+                         <br/>
+                       <div class="input-group mb-3">
+                      
+                      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                         <img src="../images/send.ico" alt="">
+                        </button>
+                           
+                      </div>
+                    </div>
+                    </div>
+                     
+                `
             })
 
             $("#post-content").html(html);
@@ -76,34 +91,68 @@ function loadInfo(){
 }
 function postStatus(){
     let id = localStorage.getItem("idUser")
-    alert("Click")
+    let content = document.getElementById("content").value
     let data = {
-        content: document.getElementById("content"),
-        time:"2022-09-22 23:11:28",
+        appUser: {
+            id : id
+        },
+        content: content,
+        time:"2022-09-22T23:11:28",
         cmtCount: 0,
-        likeCount: 0
+        likeCount: 0,
+        status: 1
+    }
+    if(content.length === 0){
+        alert("Chưa có thông tin bài đăng!")
+        return
     }
     $.ajax({
         type: 'Post',
         url: "http://localhost:8081/posts",
         data: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
         success: function (response){
             alert("Đăng bài thành công!")
-            alert(response)
+            location.reload()
         },
         error:function (err){
-            console.log(err)
+            alert("Đăng bài thất bại!")
         }
 
     })
 }
-function likePost(){
-    alert("like");
+function likePost(idPost){
+    const id = localStorage.getItem("idUser")
+    let like = {
+        appUser: {
+            id : id
+        },
+        post:{
+            id: idPost
+        }
+    }
     $.ajax({
         type: 'post',
-        url:'http://localhost:8081/like/1/1',
+        data: JSON.stringify(like),
+        url:'http://localhost:8081/likes',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        success: function (response){
+            location.reload()
+        },
+        error:function (err){
+            console.log(err)
+        }
     })
 }
-
+function logout1() {
+    localStorage.removeItem(ID_USER)
+    localStorage.removeItem(ACCESS_TOKEN)
+    window.location.href = "/CaseMD4_FE/login/login.html"
+    window.location.href = "../login/login.html"
+}
 loadInfo()
 getAllPostByUser()
